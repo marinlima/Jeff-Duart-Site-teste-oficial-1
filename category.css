@@ -571,7 +571,7 @@ nav {
 
   /* hamburger mais discreto e melhor posicionado */
   .cat-menu-btn {
-    right: 3px; /* mais colado mas sem sair da tela */
+    right: 10px; /* mais colado mas sem sair da tela */
     padding: 4px;
   }
 
