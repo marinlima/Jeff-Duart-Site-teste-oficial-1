@@ -253,12 +253,11 @@ nav {
     gap: 40px;
   }
 
- .photo-col {
+  .photo-col {
    padding: 0 24px 0 0;
    justify-content: center;
    align-items: center;
   }
-
   .vert-name {
     position: static;
     transform: rotate(180deg);
@@ -269,13 +268,11 @@ nav {
   }
 
   .photo-img {
-   width: 240px;
-   max-width: 80%;
+   width: 220px;
    height: auto;
-   margin: 0 auto;
-   object-fit: cover;
+   margin-top: 0;
    display: block;
-  }
+ }
   .bio-col {
     padding-left: 0;
   }
