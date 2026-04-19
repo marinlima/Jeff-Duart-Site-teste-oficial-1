@@ -253,13 +253,10 @@ nav {
     gap: 40px;
   }
 
-  .photo-col {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 0;
-    padding-left: 0;
-    width: 100%;
+ .photo-col {
+  padding: 0 20px;
+  justify-content: center;
+  align-items: center;
   }
 
   .vert-name {
@@ -273,10 +270,13 @@ nav {
 
   .photo-placeholder,
   .photo-img {
+   width: 240px;
    max-width: 100%;
+   height: auto;
    margin-top: 0;
-}
-
+   object-fit: cover;
+   display: block;
+  }
   .bio-col {
     padding-left: 0;
   }
