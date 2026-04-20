@@ -16,7 +16,7 @@ body {
 main {
   flex: 1;
 }
-/* ── TEXTURE (hero only) ── */
+
 .hero::before {
   content: '';
   position: absolute;
@@ -29,7 +29,6 @@ main {
   z-index: 0;
 }
 
-/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -68,7 +67,6 @@ nav {
   text-decoration: none;
 }
 
-/* ── DROPDOWN MENU ── */
 .nav-left {
   position: relative;
 }
@@ -113,7 +111,6 @@ nav {
   color: #f2f2f2;
 }
 
-/* ── HERO ── */
 .hero {
   position: relative;
   z-index: 1;
@@ -159,7 +156,6 @@ nav {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── PORTFOLIO SECTION ── */
 .portfolio {
   position: relative;
   z-index: 1;
@@ -183,7 +179,6 @@ nav {
   cursor: pointer;
 }
 
-/* ── PORTFOLIO COLLAPSE ── */
 .portfolio-title svg {
   width: 10px;
   height: 10px;
@@ -207,9 +202,6 @@ nav {
   opacity: 0;
 }
 
-/* ─────────────────────────────────────────────
-   CATEGORY VIEWER WRAPPER
-───────────────────────────────────────────── */
 .cat-viewer {
   padding-top: 0;
   display: flex;
@@ -218,9 +210,6 @@ nav {
   align-items: center;
 }
 
-/* ─────────────────────────────────────────────
-   CATEGORY NAV BAR  (arrows + title)
-───────────────────────────────────────────── */
 .cat-nav {
   width: 100%;
   max-width: 560px;
@@ -256,7 +245,7 @@ nav {
 
 .cat-title {
   font-family: 'Lato', sans-serif;
-  font-weight: 500; /* Lato Regular */
+  font-weight: 500;
   font-size: clamp(16px, 4.2vw, 22px);
   letter-spacing: 0.08em;
   color: #111111;
@@ -264,9 +253,6 @@ nav {
   text-transform: capitalize;
 }
 
-/* ─────────────────────────────────────────────
-   PANELS  (one per category)
-───────────────────────────────────────────── */
 .cat-panel {
   display: none;
   width: 100%;
@@ -281,7 +267,6 @@ nav {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Single-column full-width */
 .ph-grid-single img {
   width: 100%;
   display: block;
@@ -291,7 +276,6 @@ nav {
 }
 .ph-grid-single img:hover { opacity: 0.88; }
 
-/* Multi-column masonry-style */
 .ph-grid-multi {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -300,7 +284,6 @@ nav {
 .ph-grid-multi img {
   width: 100%;
   display: block;
-  /* aspect-ratio keeps both cells the same height */
   aspect-ratio: 2/3;
   object-fit: cover;
   object-position: center top;
@@ -309,26 +292,20 @@ nav {
 }
 .ph-grid-multi img:hover { opacity: 0.88; }
 
-/* ── spacing between grid rows ── */
 .ph-grid-single + .ph-grid-single,
 .ph-grid-multi  + .ph-grid-multi,
 .ph-grid-single + .ph-grid-multi,
 .ph-grid-multi  + .ph-grid-single { margin-top: 5px; }
 
-
-/* posição lado direito */
 .nav-right {
   position: relative;
 }
 
-/* dropdown alinhado à direita */
 .dropdown.right {
   right: 0;
   left: auto;
 }
-/* ─────────────────────────────────────────────
-   ABOUT BUTTON  (same as index)
-───────────────────────────────────────────── */
+
 .about-btn-wrap {
   margin-top: 120px;
   padding: 40px 0 80px;
@@ -350,9 +327,6 @@ nav {
 }
 .about-btn:hover { background: #f2f2f2; color: #111111; }
 
-/* ─────────────────────────────────────────────
-   FOOTER BAR
-───────────────────────────────────────────── */
 .footer-bar {
   background: #111111;
   height: 36px;
@@ -365,14 +339,11 @@ nav {
   margin-top: auto;
 }
 
-/* ─────────────────────────────────────────────
-   LIGHTBOX
-───────────────────────────────────────────── */
 .lightbox {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(0,0,0,0.95);
+  background: #f2f2f2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -392,6 +363,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; 
 }
 
 .lb-img {
@@ -399,16 +371,18 @@ nav {
   max-height: 90svh;
   object-fit: contain;
   display: block;
-  transform-origin: center;
-  transition: transform 0.25s ease;
+  transform-origin: center center;
+  transition: transform 0.08s ease;
   cursor: zoom-in;
   user-select: none;
+  touch-action: none;
+  will-change: transform; 
 }
+
 .lb-img.zoomed {
   cursor: zoom-out;
 }
 
-/* pinch-zoom helper – applied via JS */
 .lb-img { touch-action: none; }
 
 .lb-close {
@@ -422,7 +396,7 @@ nav {
 }
 .lb-close svg {
   width: 22px; height: 22px;
-  stroke: #f2f2f2;
+  stroke: #111111;
   fill: none;
   stroke-width: 1.5;
   stroke-linecap: round;
@@ -440,6 +414,7 @@ nav {
   padding: 16px 12px;
   z-index: 1001;
   opacity: 0.6;
+  stroke: #111111;
   transition: opacity 0.2s;
 }
 .lb-prev:hover, .lb-next:hover { opacity: 1; }
@@ -447,7 +422,7 @@ nav {
 .lb-next { right: 6px; }
 .lb-prev svg, .lb-next svg {
   width: 28px; height: 28px;
-  stroke: #f2f2f2;
+  stroke: #111;
   fill: none;
   stroke-width: 1.3;
   stroke-linecap: round;
@@ -461,64 +436,49 @@ nav {
   font-family: 'Lato', sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.5);
+  color: #111111;
   z-index: 1001;
 }
 
-/* ─────────────────────────────────────────────
-   DESKTOP
-───────────────────────────────────────────── */
 @media (min-width: 768px) {
   .cat-panel { max-width: 600px; padding: 0 40px 80px; }
   .cat-nav   { max-width: 600px; padding: 24px 40px 18px; }
 }
 
-/* ─────────────────────────
-   MENU HAMBURGUER DAS CATEGORIAS
-───────────────────────── */
-
 .cat-nav {
-  position: relative; /* necessário pro menu posicionar certo */
+  position: relative;
 }
 
-/* botão hamburger (igual ao de cima) */
 .cat-menu-btn {
   position: absolute;
-  right: 60px; /* mais pra esquerda */
+  right: 60px;
   top: 50%;
   transform: translateY(-50%);
-  
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 4px;
 }
 
-/* linhas do hamburger */
-.cat-menu-btn::before,
-.cat-menu-btn::after,
 .cat-menu-btn span {
-  content: '';
   display: block;
   width: 18px;
   height: 2px;
-  background: #111111; /* mais escuro igual o de cima */
-  margin: 4px 0;
+  background: #111111;
 }
 
-/* dropdown */
 .cat-menu {
   position: absolute;
   top: 110%;
   right: 0;
-
   background: rgba(242,242,242,0.97);
   backdrop-filter: blur(8px);
   border: 1px solid #ddd;
-
   min-width: 160px;
   padding: 8px 0;
-
   opacity: 0;
   pointer-events: none;
   transform: translateY(-6px);
@@ -526,14 +486,12 @@ nav {
   z-index: 300;
 }
 
-/* aberto */
 .cat-menu.open {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
 }
 
-/* links */
 .cat-menu a {
   display: block;
   font-size: 12px;
@@ -551,48 +509,37 @@ nav {
 
 @media (max-width: 480px) {
 
-  /* deixa a barra mais compacta */
   .cat-nav {
     padding: 12px 10px;
     gap: 6px;
   }
 
-  /* diminui as setas */
   .cat-arrow svg {
     width: 20px;
     height: 20px;
   }
 
-  /* diminui título */
   .cat-title {
     font-size: 13px;
     letter-spacing: 0.05em;
   }
 
-  /* hamburger mais discreto e melhor posicionado */
   .cat-menu-btn {
-    right: 25px; /* mais colado mas sem sair da tela */
+    right: 25px;
     padding: 4px;
+    gap: 4px;
   }
 
-  .cat-menu-btn::before,
-  .cat-menu-btn::after,
   .cat-menu-btn span {
     width: 16px;
     height: 2px;
-    margin: 3px 0;
   }
 
-  /* dropdown ocupa melhor o mobile */
   .cat-menu {
     right: 6px;
     min-width: 140px;
   }
 }
-
-/* ════════════════════════════════════════
-   BASE GRID (MOBILE - NÃO MEXE)
-════════════════════════════════════════ */
 
 .ph-grid-multi {
   display: grid;
@@ -605,75 +552,12 @@ nav {
   margin-bottom: 6px;
 }
 
-
 .ph-grid-multi img,
 .ph-grid-single img {
   width: 100%;
   display: block;
   object-fit: cover;
 }
-
-/* ════════════════════════════════════════
-   DESKTOP – PINTEREST STYLE (SEM BURACOS)
-════════════════════════════════════════ */
-
-@media (min-width: 1024px) {
-
-  @media (min-width: 1024px) {
-
-  .cat-panel {
-    column-count: 4;        /* ↓ diminui colunas (mais espaço p/ imagens) */
-    column-gap: 20px;
-    padding: 0 20px;        /* ↓ menos padding = mais largura útil */
-    max-width: 1600px;      /* controla largura máxima */
-    margin: 0 auto;
-  }
-
-  .ph-grid-multi,
-  .ph-grid-single {
-    display: contents;
-  }
-
-  .cat-panel img {
-    width: 100%;
-    margin-bottom: 20px;
-    break-inside: avoid;
-    display: block;
-  }
-}
-
-/* ════════════════════════════════════════
-   EXTRA – VARIAÇÃO DE TAMANHO (opcional)
-════════════════════════════════════════ */
-
-@media (min-width: 1024px) {
-
-  .cat-panel img:nth-child(3n) {
-    aspect-ratio: 3/4;
-  }
-
-  .cat-panel img:nth-child(4n) {
-    aspect-ratio: 4/5;
-  }
-
-  .cat-panel img:nth-child(5n) {
-    aspect-ratio: 1/1;
-  }
-}
-
-/* TRANSIÇÃO DE PÁGINA */
-body {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-body.page-loaded {
-  opacity: 1;
-}
-
-body.fade-out {
-  opacity: 0;
-} 
 
 @media (min-width: 1024px) {
 
@@ -698,7 +582,6 @@ body.fade-out {
   }
 }
 
-/* fade page */
 body {
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -710,4 +593,55 @@ body.page-loaded {
 
 body.fade-out {
   opacity: 0;
+}
+
+.lb-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  width: 90%;
+  position: relative; 
+}
+
+.lb-image-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.lb-caption {
+  flex: 1;
+  color: #111;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lb-vertical-name {
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: #111111;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .lb-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lb-caption {
+    text-align: center;
+  }
+
+  .lb-vertical-name {
+    display: none;
+  }
 }

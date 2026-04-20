@@ -12,7 +12,6 @@ body {
   flex-direction: column;
 }
 
-/* ── TEXTURE (hero only) ── */
 .hero::before {
   content: '';
   position: absolute;
@@ -25,7 +24,6 @@ body {
   z-index: 0;
 }
 
-/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -64,7 +62,7 @@ nav {
   text-decoration: none;
 }
 
-/* ── DROPDOWN MENU ── */
+
 .nav-left {
   position: relative;
 }
@@ -109,7 +107,7 @@ nav {
   color: #f2f2f2;
 }
 
-/* ── HERO ── */
+
 .hero {
   position: relative;
   z-index: 1;
@@ -155,7 +153,6 @@ nav {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── PORTFOLIO SECTION ── */
 .portfolio {
   position: relative;
   z-index: 1;
@@ -179,7 +176,6 @@ nav {
   cursor: pointer;
 }
 
-/* ── PORTFOLIO COLLAPSE ── */
 .portfolio-title svg {
   width: 10px;
   height: 10px;
@@ -203,7 +199,6 @@ nav {
   opacity: 0;
 }
 
-/* ── CATEGORY BLOCK ── */
 .cat-block {
   margin-bottom: 52px;
   padding: 0 20px;
@@ -240,7 +235,6 @@ nav {
   color: #f2f2f2;
 }
 
-/* ── GRIDS ── */
 .grid-single img {
   width: 100%;
   display: block;
@@ -260,7 +254,6 @@ nav {
   aspect-ratio: 3/4;
 }
 
-/* ── IMAGE LINKS ── */
 .img-link {
   display: block;
   text-decoration: none;
@@ -275,7 +268,6 @@ nav {
   opacity: 0.85;
 }
 
-/* ── ABOUT BUTTON ── */
 .about-btn-wrap {
   text-align: center;
   padding: 20px 0 60px;
@@ -301,7 +293,6 @@ nav {
   color: #111111;
 }
 
-/* ── FOOTER BAR ── */
 .footer-bar {
   background: #111111;
   height: 36px;
@@ -314,13 +305,11 @@ nav {
   margin-top: auto;
 }
 
-/* ── DESKTOP ── */
 @media (min-width: 768px) {
   .portfolio { padding: 100px 0 100px; }
   .cat-block { padding: 0 40px; max-width: 560px; margin-bottom: 64px; }
 }
 
-/* TRANSIÇÃO DE PÁGINA */
 body {
   opacity: 0;
   transition: opacity 0.3s ease;

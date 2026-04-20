@@ -1,28 +1,33 @@
-// Hamburger dropdown
 const btn = document.getElementById('hamburgerBtn');
 const dropdown = document.getElementById('dropdown');
+let dropCloseTimeout = null;
 
-btn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  dropdown.classList.toggle('open');
-});
-
-/* ABRIR NO HOVER */
 btn.addEventListener('mouseenter', () => {
+  clearTimeout(dropCloseTimeout);
   dropdown.classList.add('open');
 });
 
-document.addEventListener('click', (e) => {
-  if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+dropdown.addEventListener('mouseenter', () => {
+  clearTimeout(dropCloseTimeout);
+});
+
+btn.addEventListener('mouseleave', () => {
+  dropCloseTimeout = setTimeout(() => {
     dropdown.classList.remove('open');
-  }
+  }, 400);
+});
+
+dropdown.addEventListener('mouseleave', () => {
+  dropCloseTimeout = setTimeout(() => {
+    dropdown.classList.remove('open');
+  }, 400);
 });
 
 dropdown.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => dropdown.classList.remove('open'));
 });
 
-// Portfolio collapse
+
 const portfolioTitle = document.querySelector('.portfolio-title');
 const portfolioContent = document.getElementById('portfolioContent');
 
@@ -31,25 +36,22 @@ portfolioTitle.addEventListener('click', () => {
   portfolioContent.classList.toggle('collapsed');
 });
 
-/* FADE IN */
 window.addEventListener('load', () => {
   document.body.classList.add('page-loaded');
 });
 
-/* FADE OUT */
-document.querySelectorAll('a').forEach(link => {
-  const href = link.getAttribute('href');
+document.querySelectorAll('a[href]').forEach(link => {
+  link.addEventListener('click', e => {
+    const url = link.getAttribute('href');
 
-  if (href && !href.startsWith('#') && !href.startsWith('http')) {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
+    if (!url || url.startsWith('#') || link.target === '_blank') return;
 
-      document.body.classList.remove('page-loaded');
-      document.body.classList.add('fade-out');
+    e.preventDefault();
 
-      setTimeout(() => {
-        window.location.href = href;
-      }, 250); // mais rápido
-    });
-  }
+    document.body.classList.add('fade-out');
+
+    setTimeout(() => {
+      window.location.href = url;
+    }, 300);
+  });
 });
