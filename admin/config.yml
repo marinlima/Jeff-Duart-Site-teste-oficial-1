@@ -6,34 +6,49 @@ media_folder: assets/img
 public_folder: assets/img
 
 collections:
-  - name: "editorial-makeup"
-    label: "Editorial Makeup"
-    folder: "content/editorial-makeup"
-    create: true
-    fields:
-      - { label: "Foto", name: "image", widget: "image" }
-      - { label: "Legenda", name: "caption", widget: "string", required: false }
+  - name: "legendas"
+    label: "Legendas das Fotos"
+    files:
+      - name: "editorial-makeup"
+        label: "Editorial Makeup"
+        file: "content/editorial-makeup.json"
+        fields:
+          - name: fotos
+            label: Fotos
+            widget: list
+            fields:
+              - { label: "Arquivo", name: "arquivo", widget: "string", hint: "Ex: Editorial-makeup-1.webp" }
+              - { label: "Legenda", name: "legenda", widget: "string", required: false }
 
-  - name: "editorial-fashion"
-    label: "Editorial Fashion"
-    folder: "content/editorial-fashion"
-    create: true
-    fields:
-      - { label: "Foto", name: "image", widget: "image" }
-      - { label: "Legenda", name: "caption", widget: "string", required: false }
+      - name: "editorial-fashion"
+        label: "Editorial Fashion"
+        file: "content/editorial-fashion.json"
+        fields:
+          - name: fotos
+            label: Fotos
+            widget: list
+            fields:
+              - { label: "Arquivo", name: "arquivo", widget: "string", hint: "Ex: Editorial-fashion-1.webp" }
+              - { label: "Legenda", name: "legenda", widget: "string", required: false }
 
-  - name: "beauty-portraits"
-    label: "Beauty Portraits"
-    folder: "content/beauty-portraits"
-    create: true
-    fields:
-      - { label: "Foto", name: "image", widget: "image" }
-      - { label: "Legenda", name: "caption", widget: "string", required: false }
+      - name: "beauty-portraits"
+        label: "Beauty Portraits"
+        file: "content/beauty-portraits.json"
+        fields:
+          - name: fotos
+            label: Fotos
+            widget: list
+            fields:
+              - { label: "Arquivo", name: "arquivo", widget: "string", hint: "Ex: Beauty-portraits-1.webp" }
+              - { label: "Legenda", name: "legenda", widget: "string", required: false }
 
-  - name: "advertising"
-    label: "Advertising"
-    folder: "content/advertising"
-    create: true
-    fields:
-      - { label: "Foto", name: "image", widget: "image" }
-      - { label: "Legenda", name: "caption", widget: "string", required: false }
+      - name: "advertising"
+        label: "Advertising"
+        file: "content/advertising.json"
+        fields:
+          - name: fotos
+            label: Fotos
+            widget: list
+            fields:
+              - { label: "Arquivo", name: "arquivo", widget: "string", hint: "Ex: Advertising-1.webp" }
+              - { label: "Legenda", name: "legenda", widget: "string", required: false }
