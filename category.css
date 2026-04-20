@@ -385,6 +385,17 @@ nav {
 
 .lb-img { touch-action: none; }
 
+/* ── Animações de slide do lightbox ── */
+#lbImg.slide-out-left  { animation: slideOutLeft  0.25s ease forwards; }
+#lbImg.slide-out-right { animation: slideOutRight 0.25s ease forwards; }
+#lbImg.slide-in-left   { animation: slideInLeft   0.25s ease forwards; }
+#lbImg.slide-in-right  { animation: slideInRight  0.25s ease forwards; }
+
+@keyframes slideOutLeft  { to { transform: translateX(-60px); opacity: 0; } }
+@keyframes slideOutRight { to { transform: translateX( 60px); opacity: 0; } }
+@keyframes slideInLeft   { from { transform: translateX( 60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideInRight  { from { transform: translateX(-60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
 .lb-close {
   position: fixed;
   top: 18px; right: 20px;
