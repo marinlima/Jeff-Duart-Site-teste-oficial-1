@@ -126,7 +126,6 @@ function renderLb() {
   lbImg.alt = item.alt;
 
   const caption = document.getElementById('lbCaption');
-
   caption.innerHTML = '';
 
   lbCounter.textContent = `${lbCurrent + 1} / ${lbImages.length}`;
@@ -150,6 +149,7 @@ function applyTransform() {
   lbImg.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
 }
 
+// ── DESKTOP: click para zoom ─────────────────────────────────
 lbImg.addEventListener('click', e => {
   e.stopPropagation();
 
@@ -162,7 +162,6 @@ lbImg.addEventListener('click', e => {
 
   if (scale === 1) {
     scale = 2.5;
-
     posX -= (offsetX - centerX);
     posY -= (offsetY - centerY);
   } else {
@@ -194,36 +193,72 @@ window.addEventListener('mouseup', () => {
   isDragging = false;
 });
 
+// ── TOUCH (mobile) ──────────────────────────────────────────
+let touchStartX = 0;
+let touchStartY = 0;
+let touchStartDist = null;
+let touchInitialScale = 1;
+let isPinching = false;
+
 lbImg.addEventListener('touchstart', e => {
   if (e.touches.length === 2) {
-    initialDistance = getDistance(e.touches);
-    initialScale = scale;
+    isPinching = true;
+    touchStartDist = getDistance(e.touches);
+    touchInitialScale = scale;
+    isDragging = false;
   } else if (e.touches.length === 1) {
-    const touch = e.touches[0];
-    isDragging = true;
-    startX = touch.clientX - posX;
-    startY = touch.clientY - posY;
+    isPinching = false;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    if (scale > 1) {
+      isDragging = true;
+      startX = touchStartX - posX;
+      startY = touchStartY - posY;
+    } else {
+      isDragging = false;
+    }
   }
-});
+}, { passive: true });
 
 lbImg.addEventListener('touchmove', e => {
-  if (e.touches.length === 2) {
-    const newDistance = getDistance(e.touches);
-    scale = Math.min(Math.max(1, initialScale * (newDistance / initialDistance)), 4);
+  if (e.touches.length === 2 && isPinching) {
+    e.preventDefault();
+    const newDist = getDistance(e.touches);
+    scale = Math.min(Math.max(1, touchInitialScale * (newDist / touchStartDist)), 4);
+    applyTransform();
+  } else if (e.touches.length === 1 && isDragging && scale > 1) {
+    e.preventDefault();
+    posX = e.touches[0].clientX - startX;
+    posY = e.touches[0].clientY - startY;
     applyTransform();
   }
+}, { passive: false });
 
-  if (e.touches.length === 1 && isDragging) {
-    const touch = e.touches[0];
-    posX = touch.clientX - startX;
-    posY = touch.clientY - startY;
-    applyTransform();
+lbImg.addEventListener('touchend', e => {
+  if (isPinching) {
+    isPinching = false;
+    touchStartDist = null;
+    if (scale < 1.05) resetZoom();
+    return;
   }
-});
 
-lbImg.addEventListener('touchend', () => {
+  if (isDragging) {
+    isDragging = false;
+    return;
+  }
+
+  // swipe lateral (só quando não tem zoom)
+  if (scale === 1) {
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const deltaY = e.changedTouches[0].clientY - touchStartY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+      deltaX < 0 ? lbStep(1) : lbStep(-1);
+    }
+  }
+
   isDragging = false;
-  initialDistance = null;
+  touchStartDist = null;
 });
 
 function getDistance(touches) {
