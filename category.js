@@ -247,7 +247,7 @@ lbImg.addEventListener('touchend', e => {
     return;
   }
 
-  // swipe lateral (só quando não tem zoom)
+  // swipe lateral
   if (scale === 1) {
     const deltaX = e.changedTouches[0].clientX - touchStartX;
     const deltaY = e.changedTouches[0].clientY - touchStartY;
