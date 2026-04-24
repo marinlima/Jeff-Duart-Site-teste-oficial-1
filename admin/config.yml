@@ -9,7 +9,7 @@ collections:
   - name: "legendas"
     label: "Legendas das Fotos"
     files:
-      - name: "editorial-makeup"
+      - name: "Editorial-makeup"
         label: "Editorial Makeup"
         file: "content/editorial-makeup.json"
         fields:
@@ -20,9 +20,9 @@ collections:
               - { label: "Arquivo", name: "arquivo", widget: "string", hint: "Ex: Editorial-makeup-1.webp" }
               - { label: "Legenda", name: "legenda", widget: "string", required: false }
 
-      - name: "editorial-fashion"
+      - name: "Editorial-fashion"
         label: "Editorial Fashion"
-        file: "content/editorial-fashion.json"
+        file: "content/Editorial-fashion.json"
         fields:
           - name: fotos
             label: Fotos
@@ -31,9 +31,9 @@ collections:
               - { label: "Arquivo", name: "arquivo", widget: "string", hint: "Ex: Editorial-fashion-1.webp" }
               - { label: "Legenda", name: "legenda", widget: "string", required: false }
 
-      - name: "beauty-portraits"
+      - name: "Beauty-portraits"
         label: "Beauty Portraits"
-        file: "content/beauty-portraits.json"
+        file: "content/Beauty-portraits.json"
         fields:
           - name: fotos
             label: Fotos
@@ -42,9 +42,9 @@ collections:
               - { label: "Arquivo", name: "arquivo", widget: "string", hint: "Ex: Beauty-portraits-1.webp" }
               - { label: "Legenda", name: "legenda", widget: "string", required: false }
 
-      - name: "advertising"
+      - name: "Advertising"
         label: "Advertising"
-        file: "content/advertising.json"
+        file: "content/Advertising.json"
         fields:
           - name: fotos
             label: Fotos
